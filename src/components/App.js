@@ -3,7 +3,7 @@ import Form from './Form.js'
 
 import '../styles/App.scss';
 
-function App() {
+const App = () => {
   return (
     <div className="container">
       <div className="row">
