@@ -7,11 +7,13 @@ const Form = () => {
     <div className="card mx-auto">
       <div className="card-body">
         <h3 className="card-title">Kanda Exam</h3>
-        <InputField label="First Name"/>
-        <InputField label="Last Name"/>
-        <InputField label="Email"/>
-        <InputField label="Password"/>
-        <InputField label="Confirm Password"/>
+        <div class="input-group mb-3">
+          <InputField label="First Name"/>
+          <InputField label="Last Name"/>
+          <InputField label="Email"/>
+          <InputField label="Password"/>
+          <InputField label="Confirm Password"/>
+        </div>
         <Button label="Submit" styling="btn btn-primary"/>
       </div>
     </div>
