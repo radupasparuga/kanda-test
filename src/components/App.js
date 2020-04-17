@@ -5,9 +5,9 @@ import '../styles/App.scss';
 
 function App() {
   return (
-    <div className="App container">
+    <div className="container">
       <div className="row">
-        <div className="col-sm-12 my-auto">
+        <div className="col-md-12">
           <Form />
         </div>
       </div>
