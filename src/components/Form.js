@@ -7,13 +7,15 @@ const Form = () => {
     <div className="card mx-auto">
       <div className="card-body">
         <h3 className="card-title">Kanda Exam</h3>
-        <div class="input-group mb-3">
-          <InputField label="First Name"/>
-          <InputField label="Last Name"/>
-          <InputField label="Email"/>
-          <InputField label="Password"/>
-          <InputField label="Confirm Password"/>
-        </div>
+        <form>
+          <div className="form-row">
+            <InputField label="First Name" type="text" styling="form-group col-sm-6"/>
+            <InputField label="Last Name"type="text" styling="form-group col-sm-6" />
+            <InputField label="Email"type="email" styling="form-group col-sm-12"/>
+            <InputField label="Password"type="password" styling="form-group col-sm-6"/>
+            <InputField label="Confirm Password"type="password" styling="form-group col-sm-6" />
+          </div>
+        </form>
         <Button label="Submit" styling="btn btn-primary"/>
       </div>
     </div>

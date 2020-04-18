@@ -5,10 +5,12 @@ import '../styles/App.scss';
 
 const App = () => {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <Form />
+    <div className="app">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12">
+            <Form />
+          </div>
         </div>
       </div>
     </div>
