@@ -1,20 +1,29 @@
-import React, { useContext } from 'react';
-import { FormContext } from '../Context/FormContext.js'
+import React from 'react';
+import { useStateValue } from '../state';
 import { toCamelCase } from '../helpers/stringToCamel.js'
 
 const InputField = (props) => {
-  const { inputValue, setInputValue } = useContext(FormContext)
-  console.log(toCamelCase(props.label))
+  const [state, dispatch] = useStateValue()
+
+  const setInputValue = (e) => {
+    console.log(state)
+    dispatch({ 
+      field: e.target.name,
+      value: e.target.value
+    })
+  }
+
+  const inputValue = state[toCamelCase(props.label)]
 
   return(
     <div className={props.styling}>
       <label htmlFor={props.label}>{props.label}</label>
       <input 
         value={inputValue}
-        onChange={e => setInputValue(e.target.value)}
+        onChange={setInputValue}
         type={props.type} 
         className="form-control" 
-        id={props.label}
+        name={toCamelCase(props.label)}
       />
     </div>
   )
