@@ -57,11 +57,11 @@ const Form = () => {
         <h3 className="card-title">Kanda Exam</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-row">
-            <InputField label="First Name" type="text" styling="form-group col-sm-6" />
-            <InputField label="Last Name" type="text" styling="form-group col-sm-6" />
-            <InputField label="Email" type="email" styling="form-group col-sm-12"/>
-            <InputField label="Password" type="password" styling="form-group col-sm-6"/>
-            <InputField label="Confirm Password" type="password" styling="form-group col-sm-6" />
+            <InputField label="Email" type="email" styling="col-sm-12 order-sm-3"/>
+            <InputField label="First Name" type="text" styling="col-sm-6 order-sm-1" />
+            <InputField label="Last Name" type="text" styling="col-sm-6 order-sm-2" />
+            <InputField label="Password" type="password" styling="col-sm-6 order-sm-4"/>
+            <InputField label="Confirm Password" type="password" styling="col-sm-6 order-sm-5" />
           </div>
           <input type="Submit" className="btn btn-primary"/>
         </form>

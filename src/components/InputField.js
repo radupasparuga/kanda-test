@@ -17,7 +17,7 @@ const InputField = (props) => {
   const inputValue = state[toCamelCase(props.label)]
 
   return (
-    <div className={`has-feedback ${props.styling}`}>
+    <div className={`form-group ${props.styling}`}>
       <label htmlFor={props.label}>{props.label}</label>
       <div className="error">{state.errors[toCamelCase(props.label)]}</div>
       <input 
