@@ -1,8 +1,17 @@
 import React from 'react';
 import * as yup from 'yup';
+import { useStateValue } from '../state';
 import InputField from "./InputField.js";
 
 const Form = () => {
+  const [state, dispatch] = useStateValue()
+  let errors = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  }
   const validationSchema = yup.object().shape({
     firstName: yup
       .string()
@@ -23,9 +32,23 @@ const Form = () => {
       .oneOf([yup.ref('password'), null], 'Passwords must match')
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("test")
+    const formData = {...state}
+    delete formData.errors
+    validationSchema.validate(state, {abortEarly: false})
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        err.inner.forEach(errObj => {
+          errors[errObj.path] = errObj.message
+        })
+        dispatch({
+          field: "errors",
+          value: errors
+        })
+      })
   }
 
   return(
@@ -34,7 +57,11 @@ const Form = () => {
         <h3 className="card-title">Kanda Exam</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-row">
-            <InputField label="First Name" type="text" styling="form-group col-sm-6"/>
+            <InputField
+              label="First Name"
+              type="text"
+              styling="form-group col-sm-6"
+            />
             <InputField label="Last Name"type="text" styling="form-group col-sm-6" />
             <InputField label="Email"type="email" styling="form-group col-sm-12"/>
             <InputField label="Password"type="password" styling="form-group col-sm-6"/>

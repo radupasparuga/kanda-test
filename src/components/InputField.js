@@ -6,7 +6,7 @@ const InputField = (props) => {
   const [state, dispatch] = useStateValue()
 
   const setInputValue = (e) => {
-    dispatch({ 
+    dispatch({
       field: e.target.name,
       value: e.target.value
     })
@@ -17,6 +17,7 @@ const InputField = (props) => {
   return (
     <div className={props.styling}>
       <label htmlFor={props.label}>{props.label}</label>
+      <span>{state.errors[toCamelCase(props.label)]}</span>
       <input 
         value={inputValue}
         onChange={setInputValue}

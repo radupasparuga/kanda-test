@@ -5,12 +5,15 @@ import { StateProvider } from '../state';
 import '../styles/App.scss';
 
 const App = () => {
-  const initialState = { 
+  const initialState = {
     firstName: "", 
     lastName: "", 
     email: "", 
     password: "", 
-    confirmPassword: ""
+    confirmPassword: "",
+    errors: {
+
+    }
   }
 
   const reducer = (state, { field, value }) => {
