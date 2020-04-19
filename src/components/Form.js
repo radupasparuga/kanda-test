@@ -31,14 +31,19 @@ const Form = () => {
       .required('Confirm your password')
       .oneOf([yup.ref('password'), null], 'Passwords must match')
   })
+  let isValidated = false
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const formData = {...state}
     delete formData.errors
+    delete formData.isValidated
     validationSchema.validate(state, {abortEarly: false})
       .then(res => {
-        console.log(res)
+        dispatch({
+          field: "isValidated",
+          value: true
+        })
       })
       .catch(err => {
         err.inner.forEach(errObj => {
@@ -51,9 +56,9 @@ const Form = () => {
       })
   }
 
-  return(
-    <div className="card">
-      <div className="card-body">
+  const fields = () => {
+    return(
+      <div>
         <h3 className="card-title">Kanda Exam</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-row">
@@ -65,6 +70,14 @@ const Form = () => {
           </div>
           <input type="Submit" className="btn btn-primary"/>
         </form>
+      </div>
+    )
+  }
+
+  return (
+    <div className="card">
+      <div className="card-body">
+        {state.isValidated ? <h1 className='text-center'>Thank you!</h1> : fields()}
       </div>
     </div>
   )

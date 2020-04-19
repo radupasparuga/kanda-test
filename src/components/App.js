@@ -11,9 +11,8 @@ const App = () => {
     email: "", 
     password: "", 
     confirmPassword: "",
-    errors: {
-
-    }
+    errors: {},
+    isValidated: false
   }
 
   const reducer = (state, { field, value }) => {
