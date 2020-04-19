@@ -52,7 +52,7 @@ const Form = () => {
   }
 
   return(
-    <div className="card mx-auto">
+    <div className="card">
       <div className="card-body">
         <h3 className="card-title">Kanda Exam</h3>
         <form onSubmit={handleSubmit}>

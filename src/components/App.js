@@ -26,9 +26,9 @@ const App = () => {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
       <div className="app">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12">
+        <div className="container h-100">
+          <div className="row h-100 justify-content-center align-items-center">
+            <div className="col-sm-8">
               <Form />
             </div>
           </div>
