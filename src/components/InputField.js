@@ -1,6 +1,8 @@
 import React from 'react';
 import { useStateValue } from '../state';
-import { toCamelCase } from '../helpers/stringToCamel.js'
+import { toCamelCase } from '../helpers/stringToCamel.js';
+
+import '../styles/InputField.scss';
 
 const InputField = (props) => {
   const [state, dispatch] = useStateValue()
@@ -15,9 +17,9 @@ const InputField = (props) => {
   const inputValue = state[toCamelCase(props.label)]
 
   return (
-    <div className={props.styling}>
+    <div className={`has-feedback ${props.styling}`}>
       <label htmlFor={props.label}>{props.label}</label>
-      <span>{state.errors[toCamelCase(props.label)]}</span>
+      <div className="error">{state.errors[toCamelCase(props.label)]}</div>
       <input 
         value={inputValue}
         onChange={setInputValue}
