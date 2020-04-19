@@ -31,7 +31,6 @@ const Form = () => {
       .required('Confirm your password')
       .oneOf([yup.ref('password'), null], 'Passwords must match')
   })
-  let isValidated = false
 
   const handleSubmit = async (e) => {
     e.preventDefault()
