@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FormContext } from '../Context/FormContext.js'
 import InputField from "./InputField.js";
 import Button from "./Button.js";
 
 const Form = () => {
+  const { 
+    firstName, 
+    lastName, 
+    email, 
+    password, 
+    confirmPassword
+  } = useContext(FormContext);
   return(
     <div className="card mx-auto">
       <div className="card-body">
