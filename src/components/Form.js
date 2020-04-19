@@ -1,40 +1,47 @@
 import React from 'react';
-import { StateProvider } from '../state';
+import * as yup from 'yup';
 import InputField from "./InputField.js";
-import Button from "./Button.js";
 
 const Form = () => {
-  const formData = { 
-    firstName: "", 
-    lastName: "", 
-    email: "", 
-    password: "", 
-    confirmPassword: ""
-  }
+  const validationSchema = yup.object().shape({
+    firstName: yup
+      .string()
+      .required('First Name is required'),
+    lastName: yup
+      .string()
+      .required('Last Name is required'),
+    email: yup
+      .string()
+      .email('Email address invalid')
+      .required('Email address is required'),
+    password: yup
+      .string()
+      .required('Password is required'),
+    confirmPassword: yup
+      .string()
+      .required('Confirm your password')
+      .oneOf([yup.ref('password'), null], 'Passwords must match')
+  })
 
-  const reducer = (state, { field, value }) => {
-    return {
-      ...state,
-      [field]: value
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("test")
   }
 
   return(
     <div className="card mx-auto">
       <div className="card-body">
         <h3 className="card-title">Kanda Exam</h3>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-row">
-            <StateProvider initialState={formData} reducer={reducer}>
-              <InputField label="First Name" type="text" styling="form-group col-sm-6"/>
-              <InputField label="Last Name"type="text" styling="form-group col-sm-6" />
-              <InputField label="Email"type="email" styling="form-group col-sm-12"/>
-              <InputField label="Password"type="password" styling="form-group col-sm-6"/>
-              <InputField label="Confirm Password"type="password" styling="form-group col-sm-6" />
-            </StateProvider>
+            <InputField label="First Name" type="text" styling="form-group col-sm-6"/>
+            <InputField label="Last Name"type="text" styling="form-group col-sm-6" />
+            <InputField label="Email"type="email" styling="form-group col-sm-12"/>
+            <InputField label="Password"type="password" styling="form-group col-sm-6"/>
+            <InputField label="Confirm Password"type="password" styling="form-group col-sm-6" />
           </div>
+          <input type="Submit" className="btn btn-primary"/>
         </form>
-        <Button label="Submit" styling="btn btn-primary"/>
       </div>
     </div>
   )
