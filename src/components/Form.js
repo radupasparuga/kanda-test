@@ -34,9 +34,8 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const formData = {...state}
-    delete formData.errors
-    delete formData.isValidated
+    delete state.errors // deleting errors + isValidated so that we only validate form data
+    delete state.isValidated
     validationSchema.validate(state, {abortEarly: false})
       .then(res => {
         dispatch({
